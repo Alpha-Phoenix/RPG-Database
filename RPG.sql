@@ -194,16 +194,19 @@ ALTER TABLE RPG.Consumivel
 ----------------------------------- ITEMS --------------------------------------
 INSERT INTO RPG.Item (id, nome, preco, peso, descricao)
 VALUES
+  -------------------------------- POÇÕES --------------------------------------
   (1, 'Poção de cura pequena', 50, 1, 'Restaura 10 pontos de HP'),
   (2, 'Poção de cura média', 200, 1, 'Restaura 50 pontos de HP'),
   (3, 'Poção de cura grande', 500, 1, 'Restaura 200 pontos de HP'),
   (4, 'Poção de cura extrema', 5000, 1, 'Restaura todos os pontos de HP'),
 
   -------------------------------- ARMAS ---------------------------------------
-  (5, 'Espada curta', 1000, 10, 'Espada inicial para o guerreiro');
+  (5, 'Espada curta', 1000, 10, 'Espada inicial para o guerreiro'),
+  (6, 'Machado de guerra', 1300, 15, 'Um machado que possui uma lâmina muito afiada');
 
 INSERT INTO RPG.Consumivel (id, hp, mana, stamina)
 VALUES
+  -------------------------------- POÇÕES --------------------------------------
   (1, 10, 0, 0),
   (2, 50, 0, 0),
   (3, 200, 0, 0),
@@ -212,26 +215,32 @@ VALUES
 -------------------------------- ARMAS -----------------------------------------
 INSERT INTO RPG.Arma (id, forca, durabilidade, dano)
 VALUES
-  (5, 5, 100, 30);
+  (5, 5, 100, 30),
+  (6, 10, 200, 50);
 
 INSERT INTO RPG.Status (id, hp_max, mana_max, stamina_max, capacidade)
 VALUES
-  (1, 100, 100, 100, 100);
+  (1, 100, 100, 100, 100),
+  (2, 150, 150, 150, 200);
 
 
-INSERT INTO RPG.Personagem (id, nome, hp, mana, stamina, ouro, id_status)
-VALUES
-  (1, 'Jogador 1', 100, 100, 100, 0, 1),
-  (2, 'Jogador 2', 100, 100, 100, 0, 1);
+---------------------------------- NIVEL ---------------------------------------
 
 INSERT INTO RPG.Nivel (id, xp_pxm_nivel)
 VALUES
   (1, 100);
+
+--------------------------- PERSONAGEM / JOGADOR --------------------------------
+
+INSERT INTO RPG.Personagem (id, nome, hp, mana, stamina, ouro, id_status)
+VALUES
+  (1, 'Jogador 1', 100, 100, 100, 0, 1),
+  (2, 'Jogador 2', 150, 150, 1500, 0, 1);
 
 ALTER TABLE RPG.Jogador ALTER COLUMN id_guilda DROP NOT NULL;
 
 INSERT INTO RPG.Jogador(id, xp, forca, id_nivel, id_guilda)
 VALUES
   (1, 0, 5, 1, NULL),
-  (2, 0, 5, 1, NULL);
+  (2, 0, 10, 1, NULL);
 
